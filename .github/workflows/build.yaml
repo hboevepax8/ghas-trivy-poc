@@ -1,0 +1,33 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+#      - name: Start Tracee
+#        uses: aquasecurity/tracee-action@v0.3.0-start
+
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: build image
+        run: docker build -t organization/app:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'organization/app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+#      - name: Stop Tracee
+#        uses: aquasecurity/tracee-action@v0.3.0-stop
