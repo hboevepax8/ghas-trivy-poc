@@ -25,7 +25,7 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 
 #      - name: Stop Tracee
 #        uses: aquasecurity/tracee-action@v0.3.0-stop
