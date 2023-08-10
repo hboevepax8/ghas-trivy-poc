@@ -14,6 +14,8 @@ const (
 	AWS_SECRET_ACCESS_KEY = "H2/jMZGYYbImP8oZljUfH0ClkJkLopXjkt2cePwe"
 )
 
+var build = "development"
+
 func main() {
 	sess, err := session.NewSession(&aws.Config{
 		Region:      aws.String("us-north-1"),
