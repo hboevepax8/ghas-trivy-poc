@@ -10,9 +10,11 @@ import (
 )
 
 const (
-	AWS_ACCESS_KEY_ID     = "YOUR_ACCESS_KEY_ID"
-	AWS_SECRET_ACCESS_KEY = "YOUR_SECRET_ACCESS_KEY"
+	AWS_ACCESS_KEY_ID     = "AKIA2WX$NLLSMS4MCG7D"
+	AWS_SECRET_ACCESS_KEY = "H2/jMZGYYbImP8oZljUfH0ClkJkLopXjkt2cePwe"
 )
+
+var build = "development"
 
 func main() {
 	sess, err := session.NewSession(&aws.Config{
